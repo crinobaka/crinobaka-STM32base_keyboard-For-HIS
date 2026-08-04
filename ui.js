@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // ui.js
 class UIManager {
 	constructor(serialManager, processor, commandManager) {
@@ -376,5 +375,4 @@ class UIManager {
 	setInputText(text) {
 		this.textInput.value = text;
 	}
->>>>>>> e20817d76230c55abbf7fece21e1aec4b14f4db5
 }
