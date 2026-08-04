@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手机键盘注入器</title>
+    <style>
+        /* 简单的样式，可以根据需要美化 */
+        body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; padding: 20px; }
+        .container { background: #f9f9f9; padding: 20px; border-radius: 8px; }
+        .status { margin: 10px 0; padding: 8px; border-radius: 4px; }
+        .connected { background: #d4edda; color: #155724; }
+        .disconnected { background: #f8d7da; color: #721c24; }
+        .error { background: #f8d7da; color: #721c24; }
+        .success { background: #d4edda; color: #155724; }
+        .processing { background: #fff3cd; color: #856404; }
+        textarea { width: 100%; height: 120px; margin: 10px 0; padding: 10px; }
+        button { padding: 10px 20px; margin: 5px; }
+        select { padding: 8px; margin: 5px; }
+        .footer { margin-top: 20px; font-size: 0.9em; color: #666; }
+        .template-panel { margin-top: 15px; border-top: 1px solid #ccc; padding-top: 10px; }
+        .template-panel summary { cursor: pointer; font-weight: bold; }
+        .template-panel button { margin: 3px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⌨️ 键盘注入器</h1>
+        <p>在手机上打字，STM32帮你输入到电脑</p>
+        
+        <!-- 控制栏 -->
+        <div>
+            <button id="connectBtn">🔌 连接串口</button>
+            <label for="modeSelect">输入模式：</label>
+            <select id="modeSelect">
+                <option value="chinese">中文模式 (智能转拼音)</option>
+                <option value="english">英文模式 (直接发送)</option>
+            </select>
+            <span id="status" class="status disconnected">⚪ 未连接</span>
+        </div>
+
+        <!-- 输入区 -->
+        <textarea id="textInput" placeholder="输入文字，支持中文、英文、标点符号..."></textarea>
+        
+        <!-- 操作按钮 -->
+        <div>
+            <button id="sendBtn">✈️ 发送</button>
+            <button onclick="ui.clearInput()">🗑️ 清空</button>
+        </div>
+        
+        <!-- 快捷命令 -->
+        <div style="margin-top: 10px;">
+            <span>快捷命令：</span>
+            <button onclick="ui.insertCommand('ime')">🔄 切换输入法</button>
+            <button onclick="ui.insertCommand('punct')">🔁 切换标点</button>
+            <button onclick="ui.insertCommand('enter')">↵ 回车</button>
+            <button onclick="ui.insertCommand('tab')">⇥ Tab</button>
+        </div>
+
+        <!-- 模板页面 -->
+        <div class="template-panel">
+            <details>
+                <summary>📋 快捷模板（点击展开）</summary>
+                <div style="margin-top: 8px; display: flex; flex-wrap: wrap; gap: 5px;">
+                    <button onclick="ui.insertTemplate('br')">📝 /br 主诉</button>
+                    <button onclick="ui.insertTemplate('jc')">📝 /jc 体检</button>
+                    <button onclick="ui.insertTemplate('zz')">📝 /zz 诊断</button>
+                    <!-- 更多模板按钮... -->
+                </div>
+                <div style="margin-top: 5px; font-size: 0.8em; color: #666;">
+                    💡 提示：你也可以在输入框中直接输入 <code>/br</code> 等快捷键，然后点击发送
+                </div>
+            </details>
+        </div>
+
+        <div class="footer">
+            <small>命令格式：输入 <code>/ime</code> 切换输入法，<code>/punct</code> 切换标点模式</small>
+        </div>
+    </div>
+
+    <!-- 引入模块文件 (按顺序) -->
+    <script src="config.js"></script>
+    <script src="serial.js"></script>
+    <script src="commands.js"></script>
+
+    <!-- libs -->
+    <script src="https://unpkg.com/pinyin-pro"></script>
+
+    <!-- dictionary -->
+    <script src="processor/dictionary/index.js"></script>
+    <script src="processor/dictionary/split.js"></script>
+    <script src="processor/dictionary/prefix.js"></script>
+    <script src="processor/dictionary/medical.js"></script>
+    <script src="processor/dictionary/pinyin-medical.js"></script>
+    <script src="processor/dictionary/drug.js"></script>
+    <script src="processor/dictionary/exam.js"></script>
+
+    <!-- processor -->
+    <script src="processor/lexer.js"></script>
+    <script src="processor/parser.js"></script>
+    <script src="processor/translator.js"></script>
+    <script src="processor/encoder.js"></script>
+    <script src="processor/processor.js"></script>
+
+    <!-- DeBug -->
+    <script src="test/test.js"></script>
+    <script src="test/printer.js"></script>
+    <script src="test/assertions.js"></script>
+    <script src="test/cases.js"></script>
+
+    <!-- UI -->
+    <script src="ui.js"></script>
+
+    <!-- 初始化 -->
+    <script>
+        // 等待所有模块加载完成后，初始化UI
+        document.addEventListener('DOMContentLoaded', () => {
+            const serialManager = new SerialManager(CONFIG.serial);
+            <!-- const processor = new TextProcessor(CONFIG, commandManager); -->
+            const commandManager = new CommandManager(CONFIG);
+            const processor = new TextProcessor(CONFIG, commandManager);
+            const ui = new UIManager(serialManager, processor, commandManager);
+        
+            window.ui = ui;
+        });
+    </script>
+</body>
+</html>
