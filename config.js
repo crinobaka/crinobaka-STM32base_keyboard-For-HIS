@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // config.js
 const CONFIG = {
     // 串口配置
@@ -156,5 +155,4 @@ const CONFIG = {
        
     }
     
->>>>>>> e20817d76230c55abbf7fece21e1aec4b14f4db5
 };
