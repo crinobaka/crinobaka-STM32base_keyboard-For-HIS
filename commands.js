@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // commands.js
 class CommandManager {
     constructor(config) {
@@ -199,6 +199,5 @@ class CommandManager {
     getTemplateValue(templateKey) {
       return this.getTemplateInfo(templateKey)?.value ?? '';
     }
-    
->>>>>>> e20817d76230c55abbf7fece21e1aec4b14f4db5
+
   }
