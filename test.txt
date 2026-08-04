@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2026-07-13 22:22 v2.0 test-1
 input: 主诉：患者因发热3d入院，姓名：曹尼玛.j.na[】]
 duration:
@@ -134,4 +135,142 @@ output: 住宿：患者因发热3d如愿，姓名：草泥马.j.na[]]
 output：住宿：患者因发热3d如愿，姓名：草泥马.j.na【】】
 output：主诉：患者因发热3d入院，姓名：曹尼玛.j.na【】】
 output: caonima 。j.na[]]》。j.na[]]》。j.na[]]
+=======
+2026-07-13 22:22 v2.0 test-1
+input: 主诉：患者因发热3d入院，姓名：曹尼玛.j.na[】]
+duration:
+    ========== Processor ==========
+    printer.js:27 [0]
+    printer.js:31 type : han
+    printer.js:31 raw : 主诉
+    printer.js:31 text : ['zhusu ']
+    printer.js:35 
+    printer.js:27 [1]
+    printer.js:31 type : punct
+    printer.js:31 raw : ：
+    printer.js:31 text : ：
+    printer.js:35 
+    printer.js:27 [2]
+    printer.js:31 type : han
+    printer.js:31 raw : 患者因发热
+    printer.js:31 text : (2) ['huanzhe ', 'yinfare ']
+    printer.js:35 
+    printer.js:27 [3]
+    printer.js:31 type : command
+    printer.js:31 raw : 
+    printer.js:31 text : <SWITCH_IME>
+    printer.js:35 
+    printer.js:27 [4]
+    printer.js:31 type : number
+    printer.js:31 raw : 3
+    printer.js:31 text : 3
+    printer.js:35 
+    printer.js:27 [5]
+    printer.js:31 type : english
+    printer.js:31 raw : d
+    printer.js:31 text : d
+    printer.js:35 
+    printer.js:27 [6]
+    printer.js:31 type : command
+    printer.js:31 raw : 
+    printer.js:31 text : <SWITCH_IME>
+    printer.js:35 
+    printer.js:27 [7]
+    printer.js:31 type : han
+    printer.js:31 raw : 入院
+    printer.js:31 text : ['ruyuan ']
+    printer.js:35 
+    printer.js:27 [8]
+    printer.js:31 type : punct
+    printer.js:31 raw : ，
+    printer.js:31 text : ，
+    printer.js:35 
+    printer.js:27 [9]
+    printer.js:31 type : han
+    printer.js:31 raw : 姓名
+    printer.js:31 text : ['xingming ']
+    printer.js:35 
+    printer.js:27 [10]
+    printer.js:31 type : punct
+    printer.js:31 raw : ：
+    printer.js:31 text : ：
+    printer.js:35 
+    printer.js:27 [11]
+    printer.js:31 type : han
+    printer.js:31 raw : 曹尼玛
+    printer.js:31 text : ['caonima ']
+    printer.js:35 
+    printer.js:27 [12]
+    printer.js:31 type : command
+    printer.js:31 raw : 
+    printer.js:31 text : <SWITCH_IME>
+    printer.js:35 
+    printer.js:27 [13]
+    printer.js:31 type : punct
+    printer.js:31 raw : .
+    printer.js:31 text : .
+    printer.js:35 
+    printer.js:27 [14]
+    printer.js:31 type : english
+    printer.js:31 raw : j
+    printer.js:31 text : j
+    printer.js:35 
+    printer.js:27 [15]
+    printer.js:31 type : punct
+    printer.js:31 raw : .
+    printer.js:31 text : .
+    printer.js:35 
+    printer.js:27 [16]
+    printer.js:31 type : english
+    printer.js:31 raw : na
+    printer.js:31 text : na
+    printer.js:35 
+    printer.js:27 [17]
+    printer.js:31 type : command
+    printer.js:31 raw : 
+    printer.js:31 text : <SWITCH_IME>
+    printer.js:35 
+    printer.js:27 [18]
+    printer.js:31 type : punct
+    printer.js:31 raw : [】]
+    printer.js:31 text : [】]
+printer.js:35 
+    ========== Encoder ==========
+    printer.js:13 zhusu ：huanzhe yinfare <SWITCH_IME>3d<SWITCH_IME>ruyuan ，xingming ：caonima <SWITCH_IME>.j.na<SWITCH_IME>[】]
+    printer.js:5 
+    ========== STM32 Packet ==========
+    printer.js:13 zhusu ：huanzhe yinfare <SWITCH_IME>3d<SWITCH_IME>ruyuan ，xingming ：caonima <SWITCH_IME>.j.na<SWITCH_IME>[】]
+output: 主诉'哦患者因发热3的入园'按姓名'哦草拟吗.j.na[3f]
+
+2026-07-15 22:54 v2.0-commit test-2
+input: 主诉：患者因发热3d入院，姓名：曹尼玛.j.na[】]
+    ========== Encoder ==========
+    printer.js:13 zhusu :huanzhe yinfare <SWITCH_IME>3d<SWITCH_IME>ruyuan ,xingming :caonima <SWITCH_IME>.j.na<SWITCH_IME>[]]
+    printer.js:5 
+    ========== STM32 Packet ==========
+    printer.js:13 zhusu :huanzhe yinfare <SWITCH_IME>3d<SWITCH_IME>ruyuan ,xingming :caonima <SWITCH_IME>.j.na<SWITCH_IME>[]]
+output:　住宿：患者因发热3的如愿，姓名：草泥马。就。那【】】
+
+input: <SWITCH_IME>:[].
+output: ：【】。：【】。
+
+input: huanzhe<SWITCH_IME>ABC<SWITCH_IME>ruyuan
+output: huanzheABCruyuan
+
+input:  患者ABC入院
+output: 患者ABC入院
+
+input: huanzhe<SWITCH_IME>ABC<SWITCH_IME>ruyuan
+output: huanzheABCruyuan
+
+input: <SWITCH_IME>huanzhe <SWITCH_IME>ABC<SWITCH_IME>ruyuan 
+output: 患者ABC入院
+
+input: 主诉：患者因发热3d入院，姓名：曹尼玛.j.na[】]
+output：住宿：患者因发热３ｄ如愿，姓名：草泥马．ｊ．ｎａ【】】
+output: 住宿：患者因发热3d如愿，姓名：草泥马.j.na[]]
+output：住宿：患者因发热3d如愿，姓名：草泥马.j.na【】】
+output：主诉：患者因发热3d入院，姓名：曹尼玛.j.na【】】
+output: caonima 。j.na[]]》。j.na[]]》。j.na[]]
+>>>>>>> e20817d76230c55abbf7fece21e1aec4b14f4db5
 output：主诉：患者因发热3d入院，姓名：曹尼玛.j.na[】]
